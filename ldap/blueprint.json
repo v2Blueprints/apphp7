@@ -3,35 +3,33 @@
 	"description": "openldap ",
 	"configuration": {
 		"ServerAdmin": "hostmaster@^^domain_name^^"
-	}
-,
-"os_packages": [
-	{
-		"type": "debian",
-		"name": "openldap"
-	}
-],
-"volumes": [
-	{
-		"type": "dir",
-		"destination": "/etc/slapd/",
-		"source": "/var/lib/containers/^^identifier^^/slapd"
-	},	
-	{
-		"type": "dir",
-		"destination": "/var/lib/ldap",
-		"source": "/var/lib/containers/^^identifier^^/lib"
-	}
-],
-"images": [
-	{
-		"type": "lxd",
-		"image": "enginesd_debian_base"
-	}
-],
-"containers": [
-	{
-		"type": "lxd"
-	}
-]
+	},
+	"os_packages": {
+		"adds": [
+			"openldap"
+		]
+	},
+	"volumes": [
+		{
+			"type": "dir",
+			"destination": "/etc/slapd/",
+			"source": "/var/lib/containers/^^identifier^^/slapd"
+		},
+		{
+			"type": "dir",
+			"destination": "/var/lib/ldap",
+			"source": "/var/lib/containers/^^identifier^^/lib"
+		}
+	],
+	"images": [
+		{
+			"type": "lxd",
+			"image": "enginesd_debian_base"
+		}
+	],
+	"containers": [
+		{
+			"type": "lxd"
+		}
+	]
 }
