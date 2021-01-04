@@ -1,0 +1,65 @@
+{
+	"title": "phpmyadmin",
+	"description": "phpmyadmin",
+	"bindings": [
+		{
+			"type": "embed",
+			"descriptor": {
+				"repository": "https://github.com/v2Blueprints/ap_php7"
+			},
+			"configuration": {
+				"TZ": "Australia/Sydney",
+				"port": 8880,
+				"ServerAdmin": "Mysql Admin"
+			}
+		},
+		{
+		    "type": "embed",
+			"descriptor": {
+				"repository": "https://github.com/v2Blueprints/mariadb"
+			}
+		}
+	],
+	"system_packages": {
+		"adds": [
+		  "mariadb-client",
+			"php-json",
+			"php-mbstring",
+			"unzip",
+			"php-mysql",
+			"php-zip",
+			"php-gd"					
+		]
+	},
+	"other_packages": [
+	  {
+	    "descriptor": {
+	      "repository": "http://files.phpmyadmin.net/phpMyAdmin/4.6.4/phpMyAdmin-4.6.4-all-languages.tar.gz"
+	    },
+			"extraction": "tar -xzpf",
+			"extracted_path": "phpMyAdmin-4.6.4-all-languages",
+			"destination": "/usr/share/phpMyAdmin"
+	  }
+	],
+	"modules": {
+		"php": [
+			"mysql",
+			"mbstring",
+			"gd",
+			"zip"
+		],
+		"apache": [
+			"rewrite"
+		]
+	},
+	"packing": {
+		"late": [
+			"database"
+    ]
+  },
+	"containers": [
+		{
+			"type": "lxd"
+		}
+	]
+}
